@@ -1,5 +1,7 @@
 package com.coding.store.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +21,7 @@ public class Order {
 
     private String customer;
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Product> products;
 
 }
