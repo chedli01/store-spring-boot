@@ -15,7 +15,7 @@ public class ProductService {
     private final ProductRepository productRepository;
 
     public List<ProductDataDto> findAll(){
-        return  this.productRepository.findAll().stream().map(this::mapToDto).collect(Collectors.toList());
+        return  this.productRepository.findAll().stream().map(this::mapToDto).toList();
     }
 
     private ProductDataDto mapToDto(Product product){

@@ -1,9 +1,8 @@
 package com.coding.store.controller;
 
-import com.coding.store.OrderService;
-import com.coding.store.PaymentService;
+import com.coding.store.service.OrderService;
+import com.coding.store.service.PaymentService;
 import com.coding.store.dto.OrderDataDto;
-import com.coding.store.model.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;

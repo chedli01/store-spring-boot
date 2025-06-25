@@ -1,10 +1,10 @@
-package com.coding.store;
+package com.coding.store.service;
 
 import com.coding.store.dto.OrderDataDto;
+import com.coding.store.dto.ProductDataDto;
 import com.coding.store.model.Order;
 import com.coding.store.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +20,7 @@ public class OrderService {
     }
 
     private OrderDataDto mapToDto(Order order){
-        return new OrderDataDto(order.getCustomer(),order.getProducts().stream().mapToDouble(product -> product.getPrice()).sum());
+        List <ProductDataDto> productDataDtos=order.getProducts().stream().map(product -> new ProductDataDto(product.getName(),product.getPrice())).toList();
+        return new OrderDataDto(order.getCustomer(),productDataDtos);
     }
 }
