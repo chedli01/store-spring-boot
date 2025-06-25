@@ -4,9 +4,7 @@ import com.coding.store.dto.ProductDataDto;
 import com.coding.store.model.Product;
 import com.coding.store.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +17,12 @@ public class ProductController {
     @GetMapping
     public List<ProductDataDto> getAll(){
         return  this.productService.findAll();
+    }
+
+    @PostMapping
+    public Product createProduct(@RequestBody ProductDataDto productDataDto){
+        return  this.productService.createProduct(productDataDto);
+
     }
 
 }

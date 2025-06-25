@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -20,5 +19,12 @@ public class ProductService {
 
     private ProductDataDto mapToDto(Product product){
         return new ProductDataDto(product.getName(),product.getPrice());
+    }
+    public Product createProduct(ProductDataDto createProductDto ){
+        Product product = new Product();
+        product.setName(createProductDto.getName());
+        product.setPrice(createProductDto.getPrice());
+        return this.productRepository.save(product);
+
     }
 }
