@@ -1,5 +1,6 @@
 package com.coding.store.controller;
 
+import com.coding.store.dto.ProductDataDto;
 import com.coding.store.model.Product;
 import com.coding.store.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public List<Product> getAll(){
+    public List<ProductDataDto> getAll(){
         return  this.productService.findAll();
     }
 

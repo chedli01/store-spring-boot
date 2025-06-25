@@ -21,7 +21,6 @@ public class Order {
 
     private String customer;
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
-    @JsonManagedReference
     private List<Product> products;
 
 }

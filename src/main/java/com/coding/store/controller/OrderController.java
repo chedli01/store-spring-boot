@@ -2,6 +2,7 @@ package com.coding.store.controller;
 
 import com.coding.store.OrderService;
 import com.coding.store.PaymentService;
+import com.coding.store.dto.OrderDataDto;
 import com.coding.store.model.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +20,7 @@ public class OrderController {
     private  final PaymentService paymentService;
 
     @GetMapping
-    public List<Order> getAllOrders(){
+    public List<OrderDataDto> getAllOrders(){
         return this.orderService.getAllOrders();
     }
     @GetMapping("/payment")
