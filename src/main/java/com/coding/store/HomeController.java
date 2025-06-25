@@ -12,9 +12,6 @@ public class HomeController {
         this.orderService=orderService;
 
     }
-    @GetMapping("/order")
-    public String index(){
-        return this.orderService.placeOrder();
-    }
+
 
 }
