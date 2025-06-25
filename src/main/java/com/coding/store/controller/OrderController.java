@@ -1,5 +1,7 @@
 package com.coding.store.controller;
 
+import com.coding.store.dto.CreateOrderDto;
+import com.coding.store.model.Order;
 import com.coding.store.service.OrderService;
 import com.coding.store.service.PaymentService;
 import com.coding.store.dto.OrderDataDto;
@@ -30,6 +32,10 @@ public class OrderController {
             return "amount is null";
         }
 
+    }
+    @PostMapping("/product/{id}")
+    public OrderDataDto createOrder(@RequestBody CreateOrderDto createOrderDto, @PathVariable Long id){
+        return this.orderService.createOrder(createOrderDto,id);
     }
 
 

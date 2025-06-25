@@ -27,4 +27,7 @@ public class ProductService {
         return this.productRepository.save(product);
 
     }
+    public Product findById(Long id){
+        return this.productRepository.findById(id).orElseThrow(()->new  RuntimeException("not foyund"));
+    }
 }
