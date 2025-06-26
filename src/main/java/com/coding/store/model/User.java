@@ -19,9 +19,10 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String firstname;
     private String lastname;
+    @Column(unique = true)
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
