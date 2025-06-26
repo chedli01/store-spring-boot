@@ -37,6 +37,10 @@ public class OrderController {
     public OrderDataDto createOrder(@RequestBody CreateOrderDto createOrderDto, @PathVariable Long id){
         return this.orderService.createOrder(createOrderDto,id);
     }
+    @PostMapping("{orderId}/product/{productId}/place")
+    public OrderDataDto placeProduct(@PathVariable Long orderId, @PathVariable Long productId){
+        return  this.orderService.placeProduct(orderId,productId);
+    }
 
 
 

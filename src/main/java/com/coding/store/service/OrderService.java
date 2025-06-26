@@ -37,4 +37,15 @@ public class OrderService {
         Order newOrder= this.orderRepository.save(order);
         return mapToDto(newOrder);
     }
+    public Order getOrderById(Long orderId){
+        Order order = orderRepository.findById(orderId).orElse(null);
+        return order;
+    }
+    public OrderDataDto placeProduct(Long orderId, Long productId){
+        Order order=this.getOrderById(orderId);
+        Product product=productService.findById(productId);
+        product.setOrder(order);
+        order.getProducts().add(product);
+        return this.mapToDto(orderRepository.save(order));
+    }
 }
