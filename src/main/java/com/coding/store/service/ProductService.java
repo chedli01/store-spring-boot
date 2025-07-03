@@ -30,4 +30,12 @@ public class ProductService {
     public Product findById(Long id){
         return this.productRepository.findById(id).orElseThrow(()->new  RuntimeException("not foyund"));
     }
+    public ProductDataDto findByName(String name){
+        Product product = this.productRepository.findByName(name);
+        return mapToDto(product);
+    }
+    public List<ProductDataDto> findByPriceBetween(double min,double max){
+        List<Product> products = this.productRepository.findByPriceBetween(min,max);
+        return products.stream().map(this::mapToDto).toList();
+    }
 }

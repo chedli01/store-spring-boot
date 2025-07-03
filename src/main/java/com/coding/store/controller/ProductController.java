@@ -24,5 +24,13 @@ public class ProductController {
         return  this.productService.createProduct(productDataDto);
 
     }
+    @GetMapping("/{name}")
+    public ProductDataDto findByName(@PathVariable String name){
+        return this.productService.findByName(name);
+    }
+    @GetMapping("/price/{min}/{max}")
+    public List<ProductDataDto> findByPriceBetween(@PathVariable double min,@PathVariable double max){
+        return this.productService.findByPriceBetween(min,max);
+    }
 
 }
