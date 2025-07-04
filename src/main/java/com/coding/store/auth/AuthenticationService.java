@@ -19,14 +19,15 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public User register(RegisterRequest request) {
+    public RegisterResponse register(RegisterRequest request) {
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
-        return repository.save(user);
+        User savedUser= repository.save(user);
+        return RegisterResponse.builder().firstName(savedUser.getFirstname()).lastName(savedUser.getLastname()).email(savedUser.getEmail()).build();
 
     }
 
