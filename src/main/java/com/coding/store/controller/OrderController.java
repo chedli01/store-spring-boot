@@ -1,15 +1,17 @@
 package com.coding.store.controller;
 
 import com.coding.store.dto.CreateOrderDto;
-import com.coding.store.model.Order;
 import com.coding.store.service.OrderService;
 import com.coding.store.service.PaymentService;
 import com.coding.store.dto.OrderDataDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +24,13 @@ public class OrderController {
 
     @GetMapping
     public List<OrderDataDto> getAllOrders(){
+        String username = Optional.ofNullable(
+                SecurityContextHolder.getContext().getAuthentication()
+        ).map(Principal::getName).orElse("anonymous");
+
+        // Log the authenticated user
+        System.out.println("Request made by: " + username);
+
         return this.orderService.getAllOrders();
     }
     @GetMapping("/payment")
